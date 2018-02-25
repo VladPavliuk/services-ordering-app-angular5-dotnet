@@ -1,0 +1,31 @@
+<div class="row">
+  <table *ngIf="availableServices && availableServices.length > 0; else no_elements" class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of availableServices">
+          <th scope="row">{{ service.id }}</th>
+          <td>{{ service.title }}</td>
+          <td>
+            <button class="btn btn-success" (click)="pinService(service.id)">
+              Pin
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #no_elements>
+        <h1>No available services to add</h1>
+    </ng-template>
+</div>
+<div class="row">
+  <a class="btn btn-success" routerLink="/service-add">
+    Add service
+  </a>
+</div>

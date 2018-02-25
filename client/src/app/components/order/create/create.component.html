@@ -1,0 +1,35 @@
+<h1>Order page</h1>
+<hr>
+<app-order-organizations (onOrganizationSelected)="onOrganizationSelect($event)"></app-order-organizations>
+<app-order-services [services]="services" (onServiceSelected)="onServiceSelect($event)"></app-order-services>
+
+<div *ngIf="customerService">
+    <hr>
+    <h3>Selected service: <b>{{ customerService.title }}</b></h3>
+    <p>
+      Price: <b>$ {{ customerService.price }}</b>
+    </p>
+    <p>
+      Duration: <b>{{ customerService.duration }} min.</b>
+    </p>
+    <hr>
+    
+    <div class="form-group">
+      <label for="customer-name">Customer name</label>
+      <input (input)="onCutsomerNameInput($event)"
+              type="text" 
+              class="form-control" 
+              id="customer-name"
+              placeholder="Enter customer name">
+    </div>
+    <div class="form-group">
+      <label for="customer-phone">Customer phone</label>
+      <input (input)="onCustomerPhoneInput($event)"
+              type="text" 
+              class="form-control" 
+              id="customer-phone"
+              placeholder="Enter customer phone">
+    </div>
+    <button *ngIf="customerName && customerPhone" (click)="create()" class="btn btn-success">Make order!</button>
+</div>
+
