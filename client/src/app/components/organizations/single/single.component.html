@@ -1,9 +1,11 @@
 <div *ngIf="organization" class="mt-2">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">{{ organization.title }}</h5>
+      <h5 class="card-title">Organization: <b>{{ organization.title }}</b></h5>
 
-      <table *ngIf="services && services.length > 0" class="table">
+      <div *ngIf="services && services.length > 0">
+        <h3>Pined services</h3>
+        <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -33,6 +35,8 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
         <hr>
         <div class="container-fluid">
             <div class="clearfix">

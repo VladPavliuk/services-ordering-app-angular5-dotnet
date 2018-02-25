@@ -17,7 +17,11 @@ import { SingleComponent as OrganizationSingleComponent } from './components/org
 import { IndexComponent as ServicesIndexComponent } from './components/services/index/index.component'
 import { AddComponent as ServiceAddComponent } from './components/services/add/add.component'
 import { SingleComponent as ServiceSingleComponent } from './components/services/single/single.component';
-import { AvailableServicesComponent } from './components/organizations/available-services/available-services.component'
+import { AvailableServicesComponent } from './components/organizations/available-services/available-services.component';
+
+import { CreateComponent as CreateOrderComponent } from './components/order/create/create.component'
+import { OrganizationsComponent as OrderOrganizationsComponent } from './components/order/create/organizations/organizations.component';
+import { ServicesComponent as OrderServicesComponent } from './components/order/create/services/services.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { AvailableServicesComponent } from './components/organizations/available
     ServicesIndexComponent,
     ServiceAddComponent,
     ServiceSingleComponent,
-    AvailableServicesComponent
+    AvailableServicesComponent,
+    CreateOrderComponent,
+    OrderOrganizationsComponent,
+    OrderServicesComponent
   ],
   imports: [
     BrowserModule,

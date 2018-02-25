@@ -4,6 +4,22 @@
           type="text" 
           class="form-control" 
           id="organization-name"
-          placeholder="Enter organization name">
+          placeholder="Enter service name">
 </div>
+<div class="form-group">
+    <label for="organization-duration">Service duration (min.)</label>
+    <input (input)="onDurationInput($event)"
+            type="number" 
+            class="form-control" 
+            id="organization-duration"
+            placeholder="Enter service duration">
+  </div>
+  <div class="form-group">
+      <label for="organization-price">Service price ($)</label>
+      <input (input)="onPriceInput($event)"
+              type="number" 
+              class="form-control" 
+              id="organization-price"
+              placeholder="Enter service price">
+    </div>
 <button (click)="create()" class="btn btn-primary">Add service</button>

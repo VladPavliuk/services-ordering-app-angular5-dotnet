@@ -9,6 +9,8 @@ import { Location } from '@angular/common';
 })
 export class AddComponent implements OnInit {
   private title: string;
+  private price: number;
+  private duration: number;
 
   constructor(
     private servicesService: ServicesService, 
@@ -16,15 +18,26 @@ export class AddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   onTitleInput(event) {
     this.title = event.target.value;
   }
 
+  onPriceInput(event) {
+    this.price = parseFloat(event.target.value);
+  }
+
+  onDurationInput(event) {
+    this.duration = parseFloat(event.target.value);
+  }
+
   create(): void {
     this.servicesService.store({
-      title: this.title
+      title: this.title,
+      price: this.price,
+      duration: this.duration
     }).subscribe(res => { this.location.back() });
   }
 

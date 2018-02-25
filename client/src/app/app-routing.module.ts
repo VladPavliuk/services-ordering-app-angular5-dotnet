@@ -11,6 +11,8 @@ import { IndexComponent as ServicesIndexComponent } from './components/services/
 import { AddComponent as ServiceAddComponent } from './components/services/add/add.component'
 import { SingleComponent as ServiceSingleComponent } from './components/services/single/single.component'
 
+import { CreateComponent as CreateOrderComponent } from './components/order/create/create.component'
+
 const routes: Routes = [
 
   { path: '', redirectTo: '/organizations-list', pathMatch: 'full' },
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'service-add', component: ServiceAddComponent },
   { path: 'service/:id', component: ServiceSingleComponent },
 
+  { path: 'order', component: CreateOrderComponent },
 ];
 
 @NgModule({
