@@ -1,3 +1,9 @@
-<p>
-  single works!
-</p>
+<div *ngIf="organization" class="mt-2">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ organization.title }}</h5>
+      <button class="btn btn-danger" 
+              (click)="delete()">Delete</button>
+    </div>
+  </div>
+</div>

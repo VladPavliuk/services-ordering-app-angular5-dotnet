@@ -35,6 +35,12 @@ namespace Reservation
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder =>
+				builder.WithOrigins("http://localhost:4200")
+					.AllowAnyHeader()
+					.AllowAnyMethod()
+				);
+
             app.UseMvc();
         }
     }

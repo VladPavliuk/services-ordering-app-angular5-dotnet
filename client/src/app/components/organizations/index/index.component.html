@@ -11,7 +11,7 @@
       <tbody>
         <tr *ngFor="let organization of organizations">
           <th scope="row">{{ organization.id }}</th>
-          <td>{{ organization.name }}</td>
+          <td>{{ organization.title }}</td>
           <td>
             <a class="btn btn-primary" routerLink="/organization/{{organization.id}}">
               View

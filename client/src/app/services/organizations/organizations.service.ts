@@ -6,9 +6,9 @@ import { Organization } from '../../essences/Organization';
 @Injectable()
 export class OrganizationsService {
 
-  protected domainURI = 'http://localhost:5000';
-
   protected serverRoutes = {
+    domainURI: 'http://localhost:5000/api',
+    
     index(): string {
       return this.domainURI + '/organizations'
     },
@@ -41,6 +41,7 @@ export class OrganizationsService {
   }
 
   store(data: any): any {
+    console.log(this.serverRoutes.store());
     return this.http.post(this.serverRoutes.store(), data);
   }
 

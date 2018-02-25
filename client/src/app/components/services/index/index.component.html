@@ -1,3 +1,31 @@
-<p>
-  index works!
-</p>
+<div class="row">
+  <table *ngIf="services && services.length > 0; else no_elements" class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services">
+          <th scope="row">{{ service.id }}</th>
+          <td>{{ service.title }}</td>
+          <td>
+            <a class="btn btn-primary" routerLink="/service/{{service.id}}">
+              View
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #no_elements>
+        <h1>Add your first service!</h1>
+    </ng-template>
+</div>
+<div class="row">
+  <a class="btn btn-success" routerLink="/service-add">
+    Add service
+  </a>
+</div>

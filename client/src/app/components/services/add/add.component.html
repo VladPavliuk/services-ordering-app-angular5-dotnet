@@ -1,3 +1,9 @@
-<p>
-  add works!
-</p>
+<div class="form-group">
+  <label for="organization-name">Service name</label>
+  <input (input)="onTitleInput($event)"
+          type="text" 
+          class="form-control" 
+          id="organization-name"
+          placeholder="Enter organization name">
+</div>
+<button (click)="create()" class="btn btn-primary">Add service</button>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizationsService } from '../../../services/organizations/organizations.service';
+import { Organization } from '../../../essences/Organization';
 
 @Component({
   selector: 'app-index',
@@ -7,24 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  organizations: Object[] = [
-    {
-      id: 1,
-      "name": "Kus1"
-    },
-    {
-      id: 2,
-      "name": "Kus2"
-    },
-    {
-      id: 3,
-      "name": "Kus3"
-    }
-  ];
+  organizations: Organization[];
 
-  constructor() { }
+  constructor(private organizationsService: OrganizationsService) { }
 
   ngOnInit() {
+    this.organizationsService.index()
+      .subscribe(res => {
+        this.organizations = res;
+      });
   }
 
 }

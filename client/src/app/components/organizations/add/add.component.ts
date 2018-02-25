@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizationsService } from '../../../services/organizations/organizations.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add',
@@ -6,13 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
+  private title: string;
 
-  constructor() { }
+  constructor(
+    private organizationsService: OrganizationsService, 
+    private location: Location
+  ) { }
 
   ngOnInit() {
   }
 
+  onTitleInput(event) {
+    this.title = event.target.value;
+  }
+
   create(): void {
-    
+    this.organizationsService.store({
+      title: this.title
+    }).subscribe(res => { this.location.back() });
   }
 }
