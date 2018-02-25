@@ -2,8 +2,49 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">{{ organization.title }}</h5>
-      <button class="btn btn-danger" 
-              (click)="delete()">Delete</button>
+
+      <table *ngIf="services && services.length > 0" class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Duration</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let service of services">
+              <th scope="row">{{ service.service_ID.id }}</th>
+              <td>{{ service.service_ID.title }}</td>
+              <td>$ {{ service.service_ID.price }}</td>
+              <td>{{ service.service_ID.duration }} min.</td>
+              <td>
+                <a class="btn btn-primary" routerLink="/service/{{service.id}}">
+                  View
+                </a>
+              </td>
+              <td>
+                  <button (click)="unpinService(service.service_ID.id)" class="btn btn-danger">
+                    Unpin
+                  </button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <div class="container-fluid">
+            <div class="clearfix">
+                <a class="btn btn-success pull-left" routerLink="/organization/{{organization.id}}/available-services">
+                  Pin service
+                </a>
+    
+                <button class="btn btn-danger pull-right" 
+                  (click)="delete()">Delete organization</button>
+            </div>  
+        </div>
+           
     </div>
   </div>
 </div>

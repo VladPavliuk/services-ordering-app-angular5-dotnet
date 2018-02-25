@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrganizationsService } from '../../../services/organizations/organizations.service';
 import { Organization } from '../../../essences/Organization';
+import { Service } from '../../../essences/Service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -12,6 +13,7 @@ import { Location } from '@angular/common';
 export class SingleComponent implements OnInit {
 
   private organization: Organization;
+  private services: Service[];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +25,7 @@ export class SingleComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.getOrganization(id);
+    this.getServicesList(id);
   }
 
   getOrganization(id: number) {
@@ -32,9 +35,21 @@ export class SingleComponent implements OnInit {
       });
   }
 
+  getServicesList(id: number) {
+    this.organizationsService.servicesList(id)
+      .subscribe(res => {
+        this.services = res;
+      });
+  }
+
   delete() {
     this.organizationsService.delete(this.organization.id)
-      .subscribe(res => { console.log(res); this.location.back(); });
+      .subscribe(res => { this.location.back() });
+  }
+
+  unpinService(serviceId: number) {
+    this.organizationsService.unpinService(this.organization.id, serviceId)
+      .subscribe(res => { this.getServicesList(this.organization.id) });
   }
 
 }

@@ -57,6 +57,21 @@ namespace Reservation.Controllers
             return Ok();
         }
 
+        [HttpGet("{id}/available-services")]
+        public IEnumerable<Service> OtherSerivcesInOrganization(int id)
+        {
+            Organization organization = dbContext.Organization.FirstOrDefault(t => t.ID == id);
+
+            if(organization == null) {
+                return Enumerable.Empty<Service>();
+            }
+
+            return dbContext.Service
+                .Where(t => !dbContext.OrganizationServiceRelation
+                    .Any(b => t.ID == b.Service_ID.ID && organization == b.Organization_ID))
+                .ToList();
+        }
+
         [HttpGet("{id}/services-list")]
         public IEnumerable<OrganizationServiceRelation> ServicesList(int id)
         {

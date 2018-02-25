@@ -10,19 +10,19 @@ export class ServicesService {
     domainURI: 'http://localhost:5000/api',
     
     index(): string {
-      return this.domainURI + '/services'
+      return this.domainURI + '/services';
     },
     store(): string {
-      return this.domainURI + '/services'
+      return this.domainURI + '/services';
     },
     show(id: number): string {
-      return this.domainURI + '/services/' + id
+      return this.domainURI + '/services/' + id;
     },
     update(id: number): string {
-      return this.domainURI + '/services/' + id
+      return this.domainURI + '/services/' + id;
     },
     delete(id: number): string {
-      return this.domainURI + '/services/' + id
+      return this.domainURI + '/services/' + id;
     }
   };
 
