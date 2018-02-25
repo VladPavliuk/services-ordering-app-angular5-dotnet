@@ -9,5 +9,6 @@ namespace Reservation.Models
         public Service Service_ID { get; set; }
         public decimal Price { get; set; }
         public decimal Duration { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

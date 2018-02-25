@@ -9,6 +9,6 @@ namespace Reservation.Models
         // public Admin CreatedBy { get; set; }
         public decimal Price { get; set; }
         public decimal Duration { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

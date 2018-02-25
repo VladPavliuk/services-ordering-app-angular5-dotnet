@@ -24,9 +24,17 @@ namespace Reservation.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<DateTime>("EndedAt");
+
                     b.Property<int?>("Organization_IDID");
 
+                    b.Property<decimal>("Price");
+
                     b.Property<int?>("Service_IDID");
+
+                    b.Property<DateTime>("StartedAt");
 
                     b.Property<int?>("User_IDID");
 
@@ -46,6 +54,8 @@ namespace Reservation.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("CreatedAt");
+
                     b.Property<string>("Title");
 
                     b.HasKey("ID");
@@ -57,6 +67,8 @@ namespace Reservation.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<decimal>("Duration");
 
@@ -97,6 +109,8 @@ namespace Reservation.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("FirstName");
 

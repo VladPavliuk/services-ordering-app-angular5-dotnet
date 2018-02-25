@@ -10,7 +10,7 @@ namespace Reservation.Models
         // }
 
         //public DbSet<Reservation.Models.Admin> Admin { get; set; }
-        //public DbSet<Reservation.Models.User> User { get; set; }
+        public DbSet<Reservation.Models.User> User { get; set; }
         public DbSet<Reservation.Models.Organization> Organization { get; set; }
         public DbSet<Reservation.Models.Service> Service { get; set; }
         public DbSet<Reservation.Models.OrganizationServiceRelation> OrganizationServiceRelation { get; set; }

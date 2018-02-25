@@ -32,6 +32,7 @@ import { HeaderComponent } from './components/partials/header/header.component';
 
 import { OrganizationsService } from './services/organizations/organizations.service';
 import { ServicesService } from './services/services/services.service';
+import { OrdersService } from './services/orders/orders.service';
 
 import { IndexComponent as OrganizationsIndexComponent } from './components/organizations/index/index.component'
 import { AddComponent as OrganizationAddComponent } from './components/organizations/add/add.component'
@@ -85,6 +86,7 @@ import { ServicesComponent as OrderServicesComponent } from './components/order/
   providers: [
     OrganizationsService,
     ServicesService,
+    OrdersService,
     FormBuilder
   ],
   bootstrap: [AppComponent]
