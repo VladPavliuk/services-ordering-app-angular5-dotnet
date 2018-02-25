@@ -1,35 +1,52 @@
-<h1>Order page</h1>
-<hr>
-<app-order-organizations (onOrganizationSelected)="onOrganizationSelect($event)"></app-order-organizations>
-<app-order-services [services]="services" (onServiceSelected)="onServiceSelect($event)"></app-order-services>
+<mat-horizontal-stepper>
+    <mat-step label="Choose organization">
+      <app-order-organizations (onOrganizationSelected)="onOrganizationSelect($event)"></app-order-organizations>
 
-<div *ngIf="customerService">
-    <hr>
-    <h3>Selected service: <b>{{ customerService.title }}</b></h3>
-    <p>
-      Price: <b>$ {{ customerService.price }}</b>
-    </p>
-    <p>
-      Duration: <b>{{ customerService.duration }} min.</b>
-    </p>
-    <hr>
-    
-    <div class="form-group">
-      <label for="customer-name">Customer name</label>
-      <input (input)="onCutsomerNameInput($event)"
-              type="text" 
-              class="form-control" 
-              id="customer-name"
-              placeholder="Enter customer name">
-    </div>
-    <div class="form-group">
-      <label for="customer-phone">Customer phone</label>
-      <input (input)="onCustomerPhoneInput($event)"
-              type="text" 
-              class="form-control" 
-              id="customer-phone"
-              placeholder="Enter customer phone">
-    </div>
-    <button *ngIf="customerName && customerPhone" (click)="create()" class="btn btn-success">Make order!</button>
-</div>
+      <div *ngIf="selectedOrganization">
+        <hr>
+        <button color="primary" mat-raised-button matStepperNext>Next step!</button>
+      </div> 
+      
+    </mat-step>
+    <mat-step label="Choose service">
+      <app-order-services [services]="services" (onServiceSelected)="onServiceSelect($event)"></app-order-services>
+      <hr>
+      <div *ngIf="customerService">
+          <mat-list role="list">
+            <mat-list-item role="listitem">
+              <h3>Selected service: <b>{{ customerService.title }}</b></h3>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                Price: <b> $ {{ customerService.price }}</b> 
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              Duration: <b> {{ customerService.duration }} min.</b>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <mat-form-field>
+                    <input [owlDateTime]="dt" [owlDateTimeTrigger]="dt" matInput placeholder="Set date of begining">
+                </mat-form-field>
+                
+                <owl-date-time #dt></owl-date-time>
+            </mat-list-item>
+          </mat-list>
 
+          
+          <hr>
+          <button color="primary" mat-raised-button matStepperNext>Next step!</button>
+        </div> 
+    </mat-step>
+    <mat-step label="Set your contact info">
+        <h2>Set your info</h2>
+        <div class="customer-data-container">
+          <mat-form-field>
+            <input matInput placeholder="Your name">
+          </mat-form-field>
+        
+          <mat-form-field>
+            <input matInput placeholder="Your name">
+          </mat-form-field>
+        </div>
+        <button (click)="makeOrder()" color="primary" mat-raised-button>Make an order!</button>
+    </mat-step>
+  </mat-horizontal-stepper>

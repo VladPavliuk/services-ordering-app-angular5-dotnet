@@ -20,7 +20,7 @@ export class OrganizationsComponent implements OnInit {
   }
 
   onOrganizationSelect(organizationId: any): void {
-    this.onOrganizationSelected.emit(parseInt(organizationId.srcElement.value));
+    this.onOrganizationSelected.emit(parseInt(organizationId.value));
   }
 
   getOrganizations(): void {

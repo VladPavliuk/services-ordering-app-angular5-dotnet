@@ -11,6 +11,7 @@ import { Service } from '../../../essences/Service';
 })
 export class CreateComponent implements OnInit {
 
+  private selectedOrganization: Organization;
   public services: Service[];
   
   private customerName: string;
@@ -23,9 +24,19 @@ export class CreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+  }
+
+  makeOrder(): void {
+
   }
 
   onOrganizationSelect(organizationId: number) {
+    this.organizationsService.show(organizationId)
+      .subscribe(res => {
+        this.selectedOrganization = res;
+      });
+
     this.organizationsService.servicesList(organizationId)
       .subscribe(res => {
         this.services = res;

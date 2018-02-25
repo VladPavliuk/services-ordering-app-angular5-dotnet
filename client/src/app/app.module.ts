@@ -2,6 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+//> Angular material
+import {  
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatStepperModule,
+  MatIconModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatTooltipModule,
+  MatGridListModule,
+  MatSelectModule,
+  MatListModule
+} from '@angular/material';
+//<
+
+//> Date picker
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+//<
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -42,11 +65,27 @@ import { ServicesComponent as OrderServicesComponent } from './components/order/
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatStepperModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatListModule
   ],
   providers: [
     OrganizationsService,
-    ServicesService
+    ServicesService,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })

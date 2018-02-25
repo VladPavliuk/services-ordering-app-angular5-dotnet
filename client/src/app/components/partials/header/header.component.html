@@ -1,6 +1,31 @@
+<mat-toolbar color="primary">
+
+    <span>Services ordering system</span>
+    <span class="example-fill-remaining-space"></span>
+
+    <!-- <a routerLink="/organizations-list">Organizations</a> -->
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span routerLink="/order">Make order</span>
+          </button>
+        <button mat-menu-item>
+          <mat-icon>room_service</mat-icon>
+          <span routerLink="/organizations-list">Services</span>
+        </button> 
+        <button mat-menu-item>
+          <mat-icon>account_balance</mat-icon>
+          <span routerLink="/services-list">Organization</span>
+        </button>
+      </mat-menu>
+</mat-toolbar>
+  
+<!-- 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-      <!-- <a class="navbar-brand" href="#">Todo list</a> -->
       <button class="navbar-toggler" 
               type="button" 
               data-toggle="collapse" 
@@ -25,4 +50,4 @@
         </ul>
       </div>
   </div>
-</nav>
+</nav> -->

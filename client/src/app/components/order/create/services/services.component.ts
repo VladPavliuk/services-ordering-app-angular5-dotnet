@@ -19,7 +19,7 @@ export class ServicesComponent implements OnInit {
   }
 
   onServiceSelect(serviceId: any): void {
-    this.onServiceSelected.emit(parseInt(serviceId.srcElement.value));
+    this.onServiceSelected.emit(parseInt(serviceId.value));
   }
 
 }
