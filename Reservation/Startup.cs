@@ -36,7 +36,7 @@ namespace Reservation
             }
 
             app.UseCors(builder =>
-				builder.WithOrigins("http://localhost:4200")
+				builder.WithOrigins("http://angular-practic.vladdev.com")
 					.AllowAnyHeader()
 					.AllowAnyMethod()
 				);

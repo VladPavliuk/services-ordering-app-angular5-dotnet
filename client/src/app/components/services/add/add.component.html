@@ -1,25 +1,19 @@
-<div class="form-group">
-  <label for="organization-name">Service name</label>
-  <input (input)="onTitleInput($event)"
-          type="text" 
-          class="form-control" 
-          id="organization-name"
-          placeholder="Enter service name">
-</div>
-<div class="form-group">
-    <label for="organization-duration">Service duration (min.)</label>
-    <input (input)="onDurationInput($event)"
-            type="number" 
-            class="form-control" 
-            id="organization-duration"
-            placeholder="Enter service duration">
-  </div>
-  <div class="form-group">
-      <label for="organization-price">Service price ($)</label>
-      <input (input)="onPriceInput($event)"
-              type="number" 
-              class="form-control" 
-              id="organization-price"
-              placeholder="Enter service price">
-    </div>
-<button (click)="create()" class="btn btn-primary">Add service</button>
+<mat-card>
+    <mat-card-title>Service creation form</mat-card-title>
+    <mat-card-content>
+        <div class="service-creation-container">
+            <mat-form-field>
+                <input matInput (input)="onTitleInput($event)" placeholder="Service title">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput (input)="onDurationInput($event)" placeholder="Service duration (min.)">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput (input)="onPriceInput($event)" placeholder="Service price ($)">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="create()" color="primary" mat-raised-button>Add service</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { OrganizationsService } from '../../../../services/organizations/organizations.service';
 import { Organization } from '../../../../essences/Organization';
 
@@ -11,23 +11,18 @@ export class OrganizationsComponent implements OnInit {
 
   @Output() onOrganizationSelected = new EventEmitter<number>();
 
-  public organizations: Organization[];
+  @Input() public organizations: Organization[];
 
   constructor(private organizationsService: OrganizationsService) { }
 
   ngOnInit() {
-    this.getOrganizations();
+    
   }
 
   onOrganizationSelect(organizationId: any): void {
     this.onOrganizationSelected.emit(parseInt(organizationId.value));
   }
 
-  getOrganizations(): void {
-    this.organizationsService.index()
-      .subscribe(res => {
-        this.organizations = res;
-      });
-  }
+
 
 }

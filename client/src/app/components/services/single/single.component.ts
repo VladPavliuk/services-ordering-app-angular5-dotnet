@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class SingleComponent implements OnInit {
 
-  private service: Service;
+  public service: Service;
 
   constructor(
     private route: ActivatedRoute,

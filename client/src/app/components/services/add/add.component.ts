@@ -8,9 +8,9 @@ import { Location } from '@angular/common';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  private title: string;
-  private price: number;
-  private duration: number;
+  public  title: string;
+  public  price: number;
+  public  duration: number;
 
   constructor(
     private servicesService: ServicesService, 

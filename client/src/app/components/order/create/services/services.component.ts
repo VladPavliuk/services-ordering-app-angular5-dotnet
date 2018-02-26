@@ -9,7 +9,7 @@ import { Service } from '../../../../essences/Service';
 })
 export class ServicesComponent implements OnInit {
 
-  @Input() private services: Service[];
+  @Input() public services: Service[];
   @Output() public onServiceSelected =  new EventEmitter<number>();
 
   constructor(private servicesService: ServicesService) { }

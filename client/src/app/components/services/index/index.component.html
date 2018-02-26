@@ -1,30 +1,37 @@
-<div class="row">
-  <table *ngIf="services && services.length > 0; else no_elements" class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Service</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let service of services">
-          <th scope="row">{{ service.id }}</th>
-          <td>{{ service.title }}</td>
-          <td>
-            <a class="btn btn-primary" routerLink="/service/{{service.id}}">
-              View
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <ng-template #no_elements>
-        <h1>Add your first service!</h1>
-    </ng-template>
-</div>
-<div class="row">
-  <a class="btn btn-success" routerLink="/service-add">
-    Add service
-  </a>
-</div>
+<mat-card class="mat-elevation-z8">
+  <mat-card-title>
+    {{ services && services.length ? 'Services' : 'No services' }}
+  </mat-card-title>
+  <mat-card-content *ngIf="services && services.length">
+  <mat-table #table [dataSource]="services">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let service"> {{service.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let service">$ {{service.price}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
+      <mat-cell *matCellDef="let service">{{service.duration}} min.</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let service">
+        <button mat-button  mat-raised-button color="primary" routerLink="/service/{{service.id}}">View</button> 
+      </mat-cell>
+    </ng-container>  
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+    
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent" class="create-service-button" routerLink="/service-add">Create service</button>
+  </mat-card-actions>
+</mat-card>

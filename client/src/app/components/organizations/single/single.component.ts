@@ -12,8 +12,9 @@ import { Location } from '@angular/common';
 })
 export class SingleComponent implements OnInit {
 
-  private organization: Organization;
-  private services: Service[];
+  public  organization: Organization;
+  public  services: Service[];
+  displayedColumns = ['id', 'title', 'price', 'duration', 'actions'];
 
   constructor(
     private route: ActivatedRoute,

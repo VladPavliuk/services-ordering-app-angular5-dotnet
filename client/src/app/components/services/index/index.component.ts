@@ -10,6 +10,7 @@ import { Service } from '../../../essences/Service';
 export class IndexComponent implements OnInit {
 
   services: Service[];
+  displayedColumns: string[] = ['title', 'price', 'duration', 'actions'];
 
   constructor(private servicesService: ServicesService) { }
 

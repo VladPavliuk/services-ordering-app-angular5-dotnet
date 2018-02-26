@@ -20,6 +20,8 @@ import {
   MatSelectModule,
   MatListModule
 } from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
 //<
 
 //> Date picker
@@ -30,9 +32,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './components/partials/header/header.component';
 
+//> Services
 import { OrganizationsService } from './services/organizations/organizations.service';
 import { ServicesService } from './services/services/services.service';
 import { OrdersService } from './services/orders/orders.service';
+import { UsersService } from './services/users/users.service';
+//<
 
 import { IndexComponent as OrganizationsIndexComponent } from './components/organizations/index/index.component'
 import { AddComponent as OrganizationAddComponent } from './components/organizations/add/add.component'
@@ -45,7 +50,10 @@ import { AvailableServicesComponent } from './components/organizations/available
 
 import { CreateComponent as CreateOrderComponent } from './components/order/create/create.component'
 import { OrganizationsComponent as OrderOrganizationsComponent } from './components/order/create/organizations/organizations.component';
-import { ServicesComponent as OrderServicesComponent } from './components/order/create/services/services.component'
+import { ServicesComponent as OrderServicesComponent } from './components/order/create/services/services.component';
+import { IndexComponent  as OrdersIndexComponent } from './components/order/index/index.component'
+
+import { IndexComponent as UsersIndexComponent } from './components/users/index/index.component'
 
 @NgModule({
   declarations: [
@@ -60,7 +68,9 @@ import { ServicesComponent as OrderServicesComponent } from './components/order/
     AvailableServicesComponent,
     CreateOrderComponent,
     OrderOrganizationsComponent,
-    OrderServicesComponent
+    OrderServicesComponent,
+    OrdersIndexComponent,
+    UsersIndexComponent
   ],
   imports: [
     BrowserModule,
@@ -81,12 +91,15 @@ import { ServicesComponent as OrderServicesComponent } from './components/order/
     OwlNativeDateTimeModule,
     MatGridListModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    CdkTableModule
   ],
   providers: [
     OrganizationsService,
     ServicesService,
     OrdersService,
+    UsersService,
     FormBuilder
   ],
   bootstrap: [AppComponent]

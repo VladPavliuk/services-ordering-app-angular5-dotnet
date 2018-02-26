@@ -10,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./available-services.component.css']
 })
 export class AvailableServicesComponent implements OnInit {
-  private availableServices: Service[];
-  private organizationId: number;
-
+  public availableServices: Service[];
+  public organizationId: number;
+  public displayedColumns = ['id', 'title', 'price', 'duration', 'actions'];
+  
   constructor(
     private organizationsService: OrganizationsService, 
     private route: ActivatedRoute,

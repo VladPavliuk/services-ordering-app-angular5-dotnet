@@ -1,54 +1,50 @@
-<div *ngIf="organization" class="mt-2">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Organization: <b>{{ organization.title }}</b></h5>
+<mat-card *ngIf="organization">
+  <mat-card-title>
+    Organization: <b>{{ organization.title }}</b>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table *ngIf="services && services.length > 0" #table [dataSource]="services">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let service"> {{service.service_ID.id}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *matCellDef="let service"> {{service.service_ID.title}} </mat-cell>
+        </ng-container>
 
-      <div *ngIf="services && services.length > 0">
-        <h3>Pined services</h3>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Title</th>
-              <th scope="col">Price</th>
-              <th scope="col">Duration</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let service of services">
-              <th scope="row">{{ service.service_ID.id }}</th>
-              <td>{{ service.service_ID.title }}</td>
-              <td>$ {{ service.service_ID.price }}</td>
-              <td>{{ service.service_ID.duration }} min.</td>
-              <td>
-                <a class="btn btn-primary" routerLink="/service/{{service.id}}">
-                  View
-                </a>
-              </td>
-              <td>
-                  <button (click)="unpinService(service.service_ID.id)" class="btn btn-danger">
-                    Unpin
-                  </button>
-                </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let service">$ {{service.service_ID.price}} </mat-cell>
+          </ng-container>
 
-        <hr>
-        <div class="container-fluid">
-            <div class="clearfix">
-                <a class="btn btn-success pull-left" routerLink="/organization/{{organization.id}}/available-services">
-                  Pin service
-                </a>
+        <ng-container matColumnDef="duration">
+          <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
+          <mat-cell *matCellDef="let service"> {{service.service_ID.duration}} min.</mat-cell>
+        </ng-container>
     
-                <button class="btn btn-danger pull-right" 
-                  (click)="delete()">Delete organization</button>
-            </div>  
-        </div>
-           
-    </div>
-  </div>
-</div>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let service">
+            <button mat-button  mat-raised-button color="primary" routerLink="/service/{{service.service_ID.id}}">View</button> 
+            <button mat-button  mat-raised-button color="warn" (click)="unpinService(service.service_ID.id)">Unpin</button> 
+          </mat-cell>
+        </ng-container>  
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent"  
+            routerLink="/organization/{{organization.id}}/available-services">
+      Pin service
+    </button>
+
+    <button mat-raised-button color="warn" 
+            (click)="delete()">
+      Delete organization
+    </button>
+  </mat-card-actions>
+</mat-card>

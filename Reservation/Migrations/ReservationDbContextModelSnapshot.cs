@@ -56,7 +56,8 @@ namespace Reservation.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -98,7 +99,8 @@ namespace Reservation.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -112,11 +114,21 @@ namespace Reservation.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("Email");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("LastName")
+                        .IsRequired();
+
+                    b.Property<string>("Phone")
+                        .IsRequired();
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Phone")
+                        .IsUnique();
 
                     b.ToTable("User");
                 });
