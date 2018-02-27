@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Organization } from '../../essences/Organization';
 import { Service } from '../../essences/Service';
 
 @Injectable()
-export class ServicesService {
+export class OrdersService {
 
   protected serverRoutes = {
     domainURI: 'http://vladpavliuk-001-site1.itempurl.com/api',
     
     index(): string {
-      return this.domainURI + '/services';
+      return this.domainURI + '/orders';
     },
     store(): string {
-      return this.domainURI + '/services';
+      return this.domainURI + '/orders';
     },
     show(id: number): string {
-      return this.domainURI + '/services/' + id;
+      return this.domainURI + '/orders/' + id;
     },
     update(id: number): string {
-      return this.domainURI + '/services/' + id;
+      return this.domainURI + '/orders/' + id;
     },
     delete(id: number): string {
-      return this.domainURI + '/services/' + id;
+      return this.domainURI + '/orders/' + id;
     }
   };
 
   constructor(private http: HttpClient) { }
 
-  index(): Observable<Service[]>  {
-    return this.http.get<Service[]>(this.serverRoutes.index());
+  index(): any {
+    return this.http.get(this.serverRoutes.index());
   }
 
-  show(id: number): Observable<Service>  {
-    return this.http.get<Service>(this.serverRoutes.show(id));
+  show(id: number): any  {
+    return this.http.get(this.serverRoutes.show(id));
   }
 
   update(id: number, data: any): any {
@@ -48,4 +49,5 @@ export class ServicesService {
   delete(id: number): any {
     return this.http.delete(this.serverRoutes.delete(id));
   }
+
 }

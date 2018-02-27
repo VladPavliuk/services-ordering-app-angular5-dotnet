@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Service } from '../../essences/Service';
+import { User } from "../../essences/User";
 
 @Injectable()
-export class ServicesService {
+export class UsersService {
 
   protected serverRoutes = {
     domainURI: 'http://vladpavliuk-001-site1.itempurl.com/api',
     
     index(): string {
-      return this.domainURI + '/services';
+      return this.domainURI + '/users';
     },
     store(): string {
-      return this.domainURI + '/services';
+      return this.domainURI + '/users';
     },
     show(id: number): string {
-      return this.domainURI + '/services/' + id;
+      return this.domainURI + '/users/' + id;
     },
     update(id: number): string {
-      return this.domainURI + '/services/' + id;
+      return this.domainURI + '/users/' + id;
     },
     delete(id: number): string {
-      return this.domainURI + '/services/' + id;
+      return this.domainURI + '/users/' + id;
     }
   };
 
   constructor(private http: HttpClient) { }
 
-  index(): Observable<Service[]>  {
-    return this.http.get<Service[]>(this.serverRoutes.index());
+  index(): Observable<User[]>  {
+    return this.http.get<User[]>(this.serverRoutes.index());
   }
 
-  show(id: number): Observable<Service>  {
-    return this.http.get<Service>(this.serverRoutes.show(id));
+  show(id: number): Observable<User>  {
+    return this.http.get<User>(this.serverRoutes.show(id));
   }
 
   update(id: number, data: any): any {
@@ -41,7 +41,6 @@ export class ServicesService {
   }
 
   store(data: any): any {
-    console.log(this.serverRoutes.store());
     return this.http.post(this.serverRoutes.store(), data);
   }
 

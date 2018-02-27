@@ -8,7 +8,7 @@ import { Service } from '../../essences/Service';
 export class OrganizationsService {
 
   protected serverRoutes = {
-    domainURI: 'http://localhost:5000/api',
+    domainURI: 'http://vladpavliuk-001-site1.itempurl.com/api',
     
     availableServices(id: number): string {
       return this.domainURI + '/organizations/' + id +'/available-services';
